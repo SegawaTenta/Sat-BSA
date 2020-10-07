@@ -1,0 +1,10 @@
+#
+#
+tig00000001	Genescan	transcript	680	892	1000	+	.	gene_id "gene.1"; transcript_id "gene.1";
+tig00000001	Genescan	transcript	3492	5734	1000	-	.	gene_id "gene.2"; transcript_id "gene.2";
+tig00000001	Genescan	transcript	5806	6858	1000	-	.	gene_id "gene.3"; transcript_id "gene.3";
+tig00000001	Genescan	transcript	7528	9690	1000	-	.	gene_id "gene.4"; transcript_id "gene.4";
+tig00000001	Genescan	transcript	9902	10915	1000	-	.	gene_id "gene.5"; transcript_id "gene.5";
+tig00000001	Genescan	transcript	11199	16753	1000	+	.	gene_id "gene.6"; transcript_id "gene.6";
+tig00000001	Genescan	transcript	16905	18669	1000	-	.	gene_id "gene.7"; transcript_id "gene.7";
+tig00000001	Genescan	transcript	19201	32315	1000	-	.	gene_id "gene.8"; transcript_id "gene.8";
