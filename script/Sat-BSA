@@ -44,9 +44,11 @@ function usage() {
 
   Options of Local_de_novo_assembly:
     In addition to the Local_reads_selection options, you can set the following options!
+    Required options:
+      -d Path       : Full path to Canu.
+    Any options:
       -g String     : Genome size set in Canu.[2m]
       -r String     : Read status set in Canu.[-nanopore-raw]
-      -o OS         : Mac or Linux.[Mac]
 
   Options of Long_reads_alignment:
     Required options:
@@ -123,9 +125,9 @@ then
   cpu=1
   genome_size="2m"
   reads_info="-nanopore-raw"
-  os="Mac"
+  canu_path=""
 
-  while getopts ":c:s:e:b:f:t:g:r:o:" optKey
+  while getopts ":c:s:e:b:f:t:g:r:d:" optKey
   do
     # echo $optKey
     # echo ${OPTARG}
@@ -146,8 +148,8 @@ then
         genome_size=$OPTARG;;
       r)
         reads_info=$OPTARG;;
-      o)
-        os=$OPTARG;;
+      d)
+        canu_path=$OPTARG;;
     esac
   done
 
@@ -173,6 +175,15 @@ then
     exit
   fi
 
+  if [ $work == 2 ]
+  then
+    if [ -z "$canu_path" ]
+    then
+      echo "Please use -d option!"
+      exit
+    fi
+  fi
+
   make_Local_reads_selection.pl $bam_list $chr $s_posi $e_posi $fa_list
   chmod +x Local_reads_selection_link.sh
   ./Local_reads_selection_link.sh
@@ -185,7 +196,7 @@ then
 
   if [ $work == 2 ]
   then
-    make_Local_de_novo_assembly.pl $bam_list $genome_size $reads_info $chr $s_posi $e_posi $SCRIPT_DIR $os
+    make_Local_de_novo_assembly.pl $bam_list $genome_size $reads_info $chr $s_posi $e_posi $canu_path
     cat s2_1_Local_de_novo_assembly.txt|xargs -P ${cpu} -I % sh -c %
   fi
 
@@ -331,4 +342,3 @@ then
   cat make_script.txt|xargs -P ${cpu} -I % sh -c %
 
 fi
-
