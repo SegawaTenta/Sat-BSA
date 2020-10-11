@@ -78,7 +78,7 @@ function usage() {
       -t Int        : CPU. [1]
 
 _EOT_
-  exit 1
+  exit 0
 }
 
 work=0;
