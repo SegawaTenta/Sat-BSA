@@ -1,0 +1,21 @@
+/Users/korens/Work/Software/marbl/canu-1.9/Darwin-amd64/obj/lib/libcanu.a/stores/libsnappy/snappy-sinksource.o: \
+ stores/libsnappy/snappy-sinksource.cc /usr/include/string.h \
+ /usr/include/_types.h /usr/include/sys/_types.h /usr/include/sys/cdefs.h \
+ /usr/include/sys/_symbol_aliasing.h \
+ /usr/include/sys/_posix_availability.h /usr/include/machine/_types.h \
+ /usr/include/i386/_types.h /usr/include/sys/_pthread/_pthread_types.h \
+ /usr/include/Availability.h /usr/include/AvailabilityInternal.h \
+ /usr/include/sys/_types/_size_t.h /usr/include/sys/_types/_null.h \
+ /usr/include/sys/_types/_ssize_t.h /usr/include/strings.h \
+ stores/libsnappy/snappy-sinksource.h \
+ /opt/local/lib/gcc48/gcc/x86_64-apple-darwin16/4.8.5/include/stddef.h
+ stores/libsnappy/snappy-sinksource.cc /usr/include/string.h :
+ /usr/include/_types.h /usr/include/sys/_types.h /usr/include/sys/cdefs.h :
+ /usr/include/sys/_symbol_aliasing.h :
+ /usr/include/sys/_posix_availability.h /usr/include/machine/_types.h :
+ /usr/include/i386/_types.h /usr/include/sys/_pthread/_pthread_types.h :
+ /usr/include/Availability.h /usr/include/AvailabilityInternal.h :
+ /usr/include/sys/_types/_size_t.h /usr/include/sys/_types/_null.h :
+ /usr/include/sys/_types/_ssize_t.h /usr/include/strings.h :
+ stores/libsnappy/snappy-sinksource.h :
+ /opt/local/lib/gcc48/gcc/x86_64-apple-darwin16/4.8.5/include/stddef.h :
