@@ -4,6 +4,7 @@
     This is Sat-BAS version 1.0.
     
   Usage:
+  
     Sat-BSA -w Local_reads_selection [Required options] ..
     Sat-BSA -w Local_de_novo_assembly [Required options] ..
     Sat-BSA -w Long_reads_alignment [Required options] ..
@@ -11,6 +12,7 @@
     Sat-BSA -w Graph [Required options] ..
     
   Options of Local_reads_selection:
+  
     Required options:
       -c String     : Chromosome to select.
       -s Int        : Start position to select.
