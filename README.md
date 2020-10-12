@@ -1,21 +1,5 @@
 # Sat-BSA
 
-
-
-    oooo                        ooooooo      oooo      oo    
-   o   oo                       oo    oo    o   oo     oo    
-  oo                 o          oo    oo   oo          ooo   
-  oo                 o          oo    oo   oo         oo o   
-  ooo       oooo   ooooo        oo    oo   ooo        o  o   
-   oooo    oo   o    o          ooooooo     oooo     oo  oo  
-     oooo       o    o    oooo  oo    oo      oooo   o    o  
-       oo    ooooo   o          oo     o        oo   ooooooo 
-        oo oo   oo   o          oo     oo        oo oo    oo 
-        oo o    oo   o          oo     o         oo o      o 
-  oo   oo  oo  ooo   o          oo    oo   oo   oo oo      oo
-   ooooo    oooooo   ooo        ooooooo     ooooo  oo      oo
-   
-   
   Description:
     This is Sat-BAS version 1.0.
     
