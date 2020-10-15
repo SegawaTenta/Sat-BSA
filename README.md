@@ -142,21 +142,26 @@ command : Graph
 ## The input file format
 
 ### 1: bam_list.txt 
-- (applied in “Local_reads_selection”, “Local_de_novo_assembly”)
+(applied in “Local_reads_selection”, “Local_de_novo_assembly”)
+
 This file is containing (1)sample name and (2)full path of bam files for each sample in Tab delaminated format.
 
 Ex)
+
 (1)sample	(2)full_path_of_bam
+```
 Sample_P1	/…/…/…/P1.sort.bam
 Sample_P2	/…/…/…/P2.sort.bam
 Sample_P3	/…/…/…/P3.sort.bam
-
+```
 
 ### 2: fa_list.txt 
 (applied in “Local_reads_selection”, “Local_de_novo_assembly”)
+
 This file is containing (1)sample name and (2)full path of gz compressed fasta formatted sequence reads for each sample in Tab delaminated format. More than two fasta files used for a same sample is listed in different lines as described in Sample_P3
 
 Ex)
+
 (1)sample	(2)full_path_of_fasta.gz
 ```
 Sample_P1	/…/…/…/P1.fa.gz
@@ -168,9 +173,11 @@ Sample_P3	/…/…/…/P3_3.fa.gz
 
 ### 3: aligned_read_list.txt 
 (applied in “Local_reads_selection”, “Local_de_novo_assembly”)
+
 This file is containing (1)sample name and (2)full path of sequence read files for each sample in Tab delaminated format.  fasta, fastq and their gz compressed files can be applied.  More than two sequence files used for a same sample is listed in different lines as described in Sample_P3
 
 Ex)
+
 (1)sample	(2)full_path_of_fasta/fastq/fast.gz/fastq.gz
 ```
 Sample_P1	/…/…/…/P1.fa.gz
@@ -182,15 +189,18 @@ Sample_P3	/…/…/…/P3_3.fa
 
 ### 4: gene.gtf
 (applied in “SVs_detection”)
-This file is gtf format file developed by [Stringtie](https://ccb.jhu.edu/software/stringtie/index.shtml?t=manual#output) or any tool. The only "transcript" feature is analyzed in this program.
 
+This file is gtf format file developed by [Stringtie](https://ccb.jhu.edu/software/stringtie/index.shtml?t=manual#output) or any tool. The only "transcript" feature is analyzed in this program.
 
 ### 5: compare_list.txt
 (applied in “SVs_detection”)
+
 This file is used for comparing SVs between two samples by comparing the aligned depth of each long reads to the assembled contig. This file is contained (1)the name of Sample 1 name, (2)full path of bam for Sample 1, (3)full path of fasta format sequence reads for Sample 1, (4)the name of Sample 2 name, (5)full path of bam for Sample 2 and  (6)full path of sequence reads for Sample 2 in Tab delaminated format.
+
 If you denote the some of the compared samples in different lines, you can identify the gene which have SVs detected commonly in all of the compared samples. In the below example, you can identify the gene having SVs which is commonly detected in analysis between Sample 1 vs Sample 2 and Sample 2 vs Sample 3.
 
 Ex)
+
 (1)sample1	(2)bam1	 		(3)full path of equence read1	(4)sample2	(5)bam2	 		(6)full path of equence read2
 ```
 Sample_P1	/…/…/…/P1.sort.bam	/…/…/…/P1_alined.fa.gz	Sample_P2	/…/…/…/P2.sort.bam	/XXX/P2_alined.fa.gz
@@ -199,9 +209,11 @@ Sample_P3	/…/…/…/P3.sort.bam	/…/…/…/P3_alined.fa.gz	Sample_P2	/…/�
 
 ### 6: graph_data.txt
 (applied in “Graph”)
+
 This file is used for drawing graph plotting P-value from statistical analysis of aligned depth and showing the region having SVs. This file is contained (1)the full path of the directory of comparing the alignment result between samples and (2) hex triplet color code without # (https://en.wikipedia.org/wiki/Web_colors) in Tab delaminated format.
 
 Ex)
+
 (1)the directory path	(2) Hexadecimal color code without #
 ```
 /…/…/…/P1_vs_P2	ff0000
