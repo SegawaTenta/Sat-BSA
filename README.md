@@ -226,10 +226,12 @@ Ex)
 ### Local_reads_selection
 
 1: aligned_[chr]_[start_posi]_[end_posi]_[sample_name].fa
-  This file is multi fasta file.
+
+  This file is multi fasta file.  
   This multi fasta file contains the long reads aligned at the given genomic region.
 
 2: aligned_[chr]_[start_posi]_[end_posi]_[sample_name].stat.txt
+
   This file is a text file showing summary of the selected long reads in 1.
  
 
@@ -249,18 +251,22 @@ Ex)
 ### Long_reads_alignment
 
 1: [sample_name].sort.bam
+
   This file is the sorted bam file.
   This bam is developed by aligning the sequence reads of [sample_name] to the given reference.
 
 2: [sample_name].sort.bam.bai
+
   This is index file of 1.
 
 
 ### SVs_detection
 
 1: filter_InDel_size_DNA_result.txt
+
   This file is a text showing the detected SVs between given samples.
   The file format is written in below.
+  
   column	description
   
   1		gene id from the given gtf file 
@@ -289,8 +295,10 @@ Ex)
    ```
 
 2: [Sample1]_vs_[Sample2]/filter_InDel_size_Fishered_[Sample1]_vs_[Sample2].pileup
+
   This file is a text showing the alined depth of each sample at the position detecting the edge of the alined reads or covering no sequence reads.
   The file format is written in below.
+  
   column	description
   
   1		chr name of reference fasta. 
@@ -321,6 +329,7 @@ Ex)
 ### Graph
 
 1: [gene_id].png
+
   This file is a graph plotting P-value calculated by SVs_detection in each genomic region. 
 
 
