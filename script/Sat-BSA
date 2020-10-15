@@ -123,7 +123,7 @@ then
   bam_list=""
   fa_list=""
   cpu=1
-  genome_size="2m"
+  genome_size=2
   reads_info="-nanopore-raw"
   canu_path=""
 
@@ -196,7 +196,7 @@ then
 
   if [ $work == 2 ]
   then
-    make_Local_de_novo_assembly.pl $bam_list $genome_size $reads_info $chr $s_posi $e_posi $canu_path
+    make_Local_de_novo_assembly.pl $bam_list ${genome_size}m $reads_info $chr $s_posi $e_posi $canu_path
     cat s2_1_Local_de_novo_assembly.txt|xargs -P ${cpu} -I % sh -c %
   fi
 
