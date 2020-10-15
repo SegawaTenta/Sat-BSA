@@ -182,7 +182,7 @@ Sample_P3	/…/…/…/P3_3.fa
 
 ### 4: gene.gtf
 (applied in “SVs_detection”)
-This file is gtf format file developed by Stringtie (https://ccb.jhu.edu/software/stringtie/index.shtml?t=manual#output) or any tool. The only "transcript" feature is analyzed in this program.
+This file is gtf format file developed by [Stringtie](https://ccb.jhu.edu/software/stringtie/index.shtml?t=manual#output) or any tool. The only "transcript" feature is analyzed in this program.
 
 
 ### 5: compare_list.txt
