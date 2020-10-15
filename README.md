@@ -19,8 +19,8 @@
 ## Installation
 ### Dependencies
 ####  Softwares
-   - [perl]
-   - [R]
+   - [perl]()
+   - [R]()
    - [minimap2](https://github.com/lh3/minimap2)
    - [samtools](https://github.com/samtools/samtools)
    - [canu](https://github.com/marbl/canu)
