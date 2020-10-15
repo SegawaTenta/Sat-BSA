@@ -1,19 +1,19 @@
 # Sat-BSA
 
 ## Table of contents
- -[Installation]
- -[Dependencies]
-  +[Installation using bioconda]
-  +[Manual Installation]
- -[Usage]
-  +[command : Local_reads_selection]
-  +[command : Local_de_novo_assembly]
-  +[command : Long_reads_alignment]
-  +[command : SVs_detection]
-  +[command : Graph]
- -[The input file format]
- -[The output file format in the result of each command]
- -[The example of execution of each command and the construction of their out files]
+ - [Installation]
+ - [Dependencies]
+  + [Installation using bioconda]
+  + [Manual Installation]
+ - [Usage]
+  + [command : Local_reads_selection]
+  + [command : Local_de_novo_assembly]
+  + [command : Long_reads_alignment]
+  + [command : SVs_detection]
+  + [command : Graph]
+ - [The input file format]
+ - [The output file format in the result of each command]
+ - [The example of execution of each command and the construction of their out files]
 
 
 Installation
