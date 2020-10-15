@@ -142,11 +142,11 @@ command : Graph
 ## The input file format
 
 ### 1: bam_list.txt 
-(applied in “Local_reads_selection”, “Local_de_novo_assembly”)
+- (applied in “Local_reads_selection”, “Local_de_novo_assembly”)
 This file is containing (1)sample name and (2)full path of bam files for each sample in Tab delaminated format.
 
 Ex)
-#(1)sample	(2)full_path_of_bam
+(1)sample	(2)full_path_of_bam
 Sample_P1	/…/…/…/P1.sort.bam
 Sample_P2	/…/…/…/P2.sort.bam
 Sample_P3	/…/…/…/P3.sort.bam
@@ -157,7 +157,7 @@ Sample_P3	/…/…/…/P3.sort.bam
 This file is containing (1)sample name and (2)full path of gz compressed fasta formatted sequence reads for each sample in Tab delaminated format. More than two fasta files used for a same sample is listed in different lines as described in Sample_P3
 
 Ex)
-#(1)sample	(2)full_path_of_fasta.gz
+(1)sample	(2)full_path_of_fasta.gz
 Sample_P1	/…/…/…/P1.fa.gz
 Sample_P2	/…/…/…/P2.fa.gz
 Sample_P3	/…/…/…/P3_1.fa.gz
@@ -170,7 +170,7 @@ Sample_P3	/…/…/…/P3_3.fa.gz
 This file is containing (1)sample name and (2)full path of sequence read files for each sample in Tab delaminated format.  fasta, fastq and their gz compressed files can be applied.  More than two sequence files used for a same sample is listed in different lines as described in Sample_P3
 
 Ex)
-#(1)sample	(2)full_path_of_fasta/fastq/fast.gz/fastq.gz
+(1)sample	(2)full_path_of_fasta/fastq/fast.gz/fastq.gz
 Sample_P1	/…/…/…/P1.fa.gz
 Sample_P2	/…/…/…/P2.fa.gz
 Sample_P3	/…/…/…/P3_1.fa.gz
@@ -189,7 +189,7 @@ This file is used for comparing SVs between two samples by comparing the aligned
 If you denote the some of the compared samples in different lines, you can identify the gene which have SVs detected commonly in all of the compared samples. In the below example, you can identify the gene having SVs which is commonly detected in analysis between Sample 1 vs Sample 2 and Sample 2 vs Sample 3.
 
 Ex)
-#(1)sample1	(2)bam1	 		(3)full path of equence read1	(4)sample2	(5)bam2	 		(6)full path of equence read2
+(1)sample1	(2)bam1	 		(3)full path of equence read1	(4)sample2	(5)bam2	 		(6)full path of equence read2
 Sample_P1	/…/…/…/P1.sort.bam	/…/…/…/P1_alined.fa.gz	Sample_P2	/…/…/…/P2.sort.bam	/XXX/P2_alined.fa.gz
 Sample_P3	/…/…/…/P3.sort.bam	/…/…/…/P3_alined.fa.gz	Sample_P2	/…/…/…/P2.sort.bam	/XXX/P2_alined.fa.gz
 
