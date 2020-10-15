@@ -302,17 +302,11 @@ Ex)
   column	description
   
   1		chr name of reference fasta. 
-  
   2		position of reference fasta.
-  
   3		alignment depth of [Sample1].
-  
   4		alignment depth of [Sample2].
-  
   5		number of edge of the alined reads of [Sample1].
-  
   6		number of edge of the alined reads of [Sample2].
-  
   7		P-value calculated from Fisher’s exact test.
 
  ex)
