@@ -195,7 +195,8 @@ This file is gtf format file developed by [Stringtie](https://ccb.jhu.edu/softwa
 ### 5: compare_list.txt
 (Applied in “SVs_detection”)
 
-This file is used for comparing SVs between two samples by comparing the aligned depth of each long reads to the assembled contig. This file is contained (1)the name of Sample 1 name, (2)full path of bam for Sample 1, (3)full path of fasta format sequence reads for Sample 1, (4)the name of Sample 2 name, (5)full path of bam for Sample 2 and  (6)full path of sequence reads for Sample 2 in Tab delaminated format.
+This file is used for comparing SVs between two samples by comparing the aligned depth of each long reads to the assembled contig. This file is contained 
+(1)the name of Sample 1 name, (2)full path of bam for Sample 1, (3)full path of fasta format sequence reads for Sample 1, (4)the name of Sample 2 name, (5)full path of bam for Sample 2 and  (6)full path of sequence reads for Sample 2 in Tab delaminated format.
 
 If you denote the some of the compared samples in different lines, you can identify the gene which have SVs detected commonly in all of the compared samples. In the below example, you can identify the gene having SVs which is commonly detected in analysis between Sample 1 vs Sample 2 and Sample 2 vs Sample 3.
 
