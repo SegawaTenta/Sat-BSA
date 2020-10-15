@@ -73,10 +73,11 @@
   ```
   
 ## Usage
-```
-$ Sat-BSA -h
-```
   This command is used for confirming the version and the detailed Usage. 
+ ```
+ $ Sat-BSA -h
+ ```
+ ```
 Description:
   This is Sat-BSA version 1.9.
   Sat-BSA is a package used for applying local de novo assembly and identifying the structural variants in the assembled contigs.  
@@ -137,4 +138,4 @@ command : Graph
     -c Path       : Full path of graph_data.txt listing the path to directory constructed by SVs_detection command and color used for the line of graph (Input format 6).
   Additional options:
     -t Int        : Thread number. Default=[1]
-    
+```
