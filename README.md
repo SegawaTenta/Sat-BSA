@@ -16,14 +16,14 @@
  - [The example of execution of each command and the construction of their out files](#The-example-of-execution-of-each-command-and-the-construction-of-their-out-files)
 
 
-Installation
- Dependencies
-  Softwares
-   ・perl
-   ・R
-   ・minimap2 (https://github.com/lh3/minimap2)
-   ・samtools (https://github.com/samtools/samtools)
-   ・canu (https://github.com/marbl/canu)
+## Installation
+### Dependencies
+####  Softwares
+   - [perl]
+   - [R]
+   - [minimap2](https://github.com/lh3/minimap2)
+   - [samtools](https://github.com/samtools/samtools)
+   - [canu](https://github.com/marbl/canu)
 
  Installation using bioconda
   You can install Sat-BSA using bioconda.
