@@ -262,16 +262,25 @@ Ex)
   This file is a text showing the detected SVs between given samples.
   The file format is written in below.
   column	description
+  
   1		gene id from the given gtf file 
+  
   2		chr name for the gene of 1 column.
+  
   3		start position of genomic region for the gene of 1 column.* 
+  
   4		end position of genomic region for the gene of 1 column.*
+  
   5		strand of the  gene in 1 column.
-  6		detecting common mutation. [mut] indicates the gene containing common mutation among compared samples.  
+  
+  6		detecting common mutation. [mut] indicates the gene containing common mutation among compared samples. 
+  
   7~		the combination detected the mutation in the gene of 1 column.
+  
   * The genomic region contains not only transcript feature defined by gtf file but also promoter length indicated by option -p.
 
   ex)
+  
    [gene_id] [chr] [start] [end]   [strand] [common] [pompare1] [compare2]
    ```
    gene.1	tig00000001	1	10000	+	-	-
@@ -285,14 +294,21 @@ Ex)
   column	description
   
   1		chr name of reference fasta. 
+  
   2		position of reference fasta.
+  
   3		alignment depth of [Sample1].
+  
   4		alignment depth of [Sample2].
+  
   5		number of edge of the alined reads of [Sample1].
+  
   6		number of edge of the alined reads of [Sample2].
+  
   7		P-value calculated from Fisher’s exact test.
 
  ex)
+ 
   [chr]	[position] [Sample1_depth] [Sample2_depth] [edge_Sample1] [edge_Sample2] [P-value]
   ```
   tig00000001 1020 2 2 1 1 1
