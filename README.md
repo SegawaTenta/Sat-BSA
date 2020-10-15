@@ -6,15 +6,14 @@
    + [Installation using bioconda](#Installation-using-bioconda)
    + [Manual Installation](#Manual-Installation)
  - [Usage](#Usage)
-   + [command : Local_reads_selection](#command-:-Local_reads_selection)
-   + [command : Local_de_novo_assembly](#command-:-Local_de_novo_assembly)
-   + [command : Long_reads_alignment](#command-:-Long_reads_alignment)
-   + [command : SVs_detection](#command-:-SVs_detection)
-   + [command : Graph](#command-:-Graph)
  - [The input file format](#The-input-file-format)
  - [The output file format in the result of each command](#The-output-file-format-in-the-result-of-each-command)
  - [The example of execution of each command and the construction of their out files](#The-example-of-execution-of-each-command-and-the-construction-of-their-out-files)
-
+    + [command : Local_reads_selection](#command-:-Local_reads_selection)
+    + [command : Local_de_novo_assembly](#command-:-Local_de_novo_assembly)
+    + [command : Long_reads_alignment](#command-:-Long_reads_alignment)
+    + [command : SVs_detection](#command-:-SVs_detection)
+    + [command : Graph](#command-:-Graph)
 
 ## Installation
 ### Dependencies
