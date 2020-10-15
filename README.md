@@ -27,36 +27,55 @@
 
 ### Installation using bioconda
   You can install Sat-BSA using bioconda.
+  ```
   $conda install -c bioconda sat-bsa
+  ```
   Alternatively, if you want to execute Sat-BSA in a specific environment, below conda command is applied for installing.
+  ```
   $ conda create -n Sat-BSA -c bioconda sat-bsa
   $ conda activate Sat-BSA
+  ```
   However, Canu is not installed by above command. You need to download Canu from GitHub by yourself (https://github.com/marbl/canu/releases).
   
   You need to download the input files which used as the argument.
+  ```
   $ wget https://github.com/SegawaTenta/Sat-BSA_input_file/releases/download/v1.0/Sat-BSA_input_file-1.0.tar
   $ tar -xvf Sat-BSA_input_file-1.0.tar
+  ```
   or 
+  ```
   $ git clone https://github.com/SegawaTenta/Sat-BSA_input_file.git 
+  ```
 
 ### Manuel Installation
   If you got an error during installation, you can install Sat-BSA, manually.
+  ```
   $ git clone https://github.com/SegawaTenta/Sat-BSA.git
+  ```
   Please create path a path to Sat-BSA/script. The following is an example of a command to create a path.
+  ```
   $ export PATH="$PATH:/Sat-BSA/script"
+  ```
   Then, you have to install other dependencies and softwares by yourself.  Creating path to samtools and minimap2 should be confirmed by below commands.
+  ```
   $samtools
   $minimap2
-
+  ```
   You need to download the input files which used as the argument.
   You need to download the input files which used as the argument.
+  ```
   $ wget https://github.com/SegawaTenta/Sat-BSA_input_file/releases/download/v1.0/Sat-BSA_input_file-1.0.tar
   $ tar -xvf Sat-BSA_input_file-1.0.tar
-  or 
+  ```
+  or
+  ```
   $ git clone https://github.com/SegawaTenta/Sat-BSA_input_file.git  
-
+  ```
+  
 ## Usage
+```
 $ Sat-BSA -h
+```
   This command is used for confirming the version and the detailed Usage. 
 Description:
   This is Sat-BSA version 1.9.
