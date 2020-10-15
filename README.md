@@ -28,7 +28,7 @@
 ### Installation using bioconda
   You can install Sat-BSA using bioconda.
   ```
-  $conda install -c bioconda sat-bsa
+  $ conda install -c bioconda sat-bsa
   ```
   Alternatively, if you want to execute Sat-BSA in a specific environment, below conda command is applied for installing.
   ```
