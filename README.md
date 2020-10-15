@@ -158,12 +158,13 @@ This file is containing (1)sample name and (2)full path of gz compressed fasta f
 
 Ex)
 (1)sample	(2)full_path_of_fasta.gz
+```
 Sample_P1	/…/…/…/P1.fa.gz
 Sample_P2	/…/…/…/P2.fa.gz
 Sample_P3	/…/…/…/P3_1.fa.gz
 Sample_P3	/…/…/…/P3_2.fa.gz
 Sample_P3	/…/…/…/P3_3.fa.gz
-
+```
 
 ### 3: aligned_read_list.txt 
 (applied in “Local_reads_selection”, “Local_de_novo_assembly”)
@@ -171,12 +172,13 @@ This file is containing (1)sample name and (2)full path of sequence read files f
 
 Ex)
 (1)sample	(2)full_path_of_fasta/fastq/fast.gz/fastq.gz
+```
 Sample_P1	/…/…/…/P1.fa.gz
 Sample_P2	/…/…/…/P2.fa.gz
 Sample_P3	/…/…/…/P3_1.fa.gz
 Sample_P3	/…/…/…/P3_2.fastq.gz
 Sample_P3	/…/…/…/P3_3.fa
-
+```
 
 ### 4: gene.gtf
 (applied in “SVs_detection”)
@@ -190,9 +192,10 @@ If you denote the some of the compared samples in different lines, you can ident
 
 Ex)
 (1)sample1	(2)bam1	 		(3)full path of equence read1	(4)sample2	(5)bam2	 		(6)full path of equence read2
+```
 Sample_P1	/…/…/…/P1.sort.bam	/…/…/…/P1_alined.fa.gz	Sample_P2	/…/…/…/P2.sort.bam	/XXX/P2_alined.fa.gz
 Sample_P3	/…/…/…/P3.sort.bam	/…/…/…/P3_alined.fa.gz	Sample_P2	/…/…/…/P2.sort.bam	/XXX/P2_alined.fa.gz
-
+```
 
 ### 6: graph_data.txt
 (applied in “Graph”)
@@ -200,9 +203,10 @@ This file is used for drawing graph plotting P-value from statistical analysis o
 
 Ex)
 (1)the directory path	(2) Hexadecimal color code without #
+```
 /…/…/…/P1_vs_P2	ff0000
 /…/…/…/P3_vs_P2	008000
-
+```
 
 
 
