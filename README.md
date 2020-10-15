@@ -302,11 +302,17 @@ Ex)
   column	description
   
   1		chr name of reference fasta. 
+  
   2		position of reference fasta.
+  
   3		alignment depth of [Sample1].
+  
   4		alignment depth of [Sample2].
+  
   5		number of edge of the alined reads of [Sample1].
+  
   6		number of edge of the alined reads of [Sample2].
+  
   7		P-value calculated from Fisher’s exact test.
 
  ex)
@@ -327,8 +333,109 @@ Ex)
   This file is a graph plotting P-value calculated by SVs_detection in each genomic region. 
 
 
+## The example of execution of each command and the construction of their out files.
 
+### Local_reads_selection
+```
+$ Sat-BSA -w Local_reads_selection \
+	-c chr1 \
+	-s 5000 \
+	-e 10000 \
+	-b /…/…/…/bam_list.txt \
+	-f /…/…/…/fa_list.txt \
+```
+OUTPUT
+```
+|--aligned_chr1_5000_10000_P1.fa
+|--aligned_chr1_5000_10000_P1.stat.txt
+|--aligned_chr1_5000_10000_P2.fa
+|--aligned_chr1_5000_10000_P2.stat.txt
+|--aligned_chr1_5000_10000_P3.fa
+|--aligned_chr1_5000_10000_P3.stat.txt
+|--s1_1_select_reads_name.txt
+|--s1_2_pick_up.txt
+|--s1_3_merge.txt
+|--s1_4_info.txt
+|--s2_1_Local_de_novo_assembly.txt
+```
 
+### Local_de_novo_assembly
+```
+$ Sat-BSA -w Local_de_novo_assembly \
+	-c chr1 \
+	-s 10000 \
+	-e 20000 \
+	-b /…/…/…/bam_list.txt \
+	-f /…/…/…/fa_list.txt \
+	-g 10 \
+	-d /…/…/…/Darwin-amd64/bin/canu
+```
+OUTPUT
+```
+|--aligned_chr1_10000_20000_P1.fa
+|--aligned_chr1_10000_20000_P1.stat.txt
+|--aligned_chr1_10000_20000_P2.fa
+|--aligned_chr1_10000_20000_P2.stat.txt
+|--aligned_chr1_10000_20000_P3.fa
+|--aligned_chr1_10000_20000_P3.stat.txt
+|--Local_de_novo_assembly_P1_chr1_10000_20000
+|--Local_de_novo_assembly_P2_chr1_10000_20000
+|--Local_de_novo_assembly_P3_chr1_10000_20000
+|--s1_1_select_reads_name.txt
+|--s1_2_pick_up.txt
+|--s1_3_merge.txt
+|--s1_4_info.txt
+|--s2_1_Local_de_novo_assembly.txt
+```
+### Long_reads_alignment
+```
+$ Sat-BSA	-w Long_reads_alignment \
+	-f /…/…/…/Sat-BSA/fa_list.txt \
+	-r /…/…/…/reference.fasta \
+	-q 60
+```
+OUTPUT
+```
+|--P1.sort.bam
+|--P1.sort.bam.bai
+|--P2.sort.bam
+|--P2.sort.bam.bai
+|--P3.sort.bam
+|--P3.sort.bam.bai
+|--s3_1_minimap2_alignment.txt
+|--s3_2_filter_MQ.txt
+|--s3_3_sam_to_bam.txt
+|--s3_4_merge.txt
+|--s3_5_sort.txt
+|--s3_6_index.txt
+```
+### SVs_detection
+```
+$ Sat-BSA	-w SVs_detection \
+	-c /…/…/…/compare_list.txt \
+	-g /…/…/…/gene_prediction.gtf \
+	-r /…/…/…/reference.fasta
+```
+OUTPUT
+```
+|--P1_vs_P2
+|  |--Fishered_P1_vs_P2.pileup
+|  |--filter_InDel_size_Fishered_P1_vs_P2.pileup
+|--P3_vs_P2
+|  |--filter_InDel_size_Fishered_P3_vs_P2.pileup
+|--filter_InDel_size_DNA_result.txt
+|--s4_1_compare.txt
+```
 
-
-
+### Graph
+```
+$ Sat-BAS	-w Graph \
+		-r filter_InDel_size_DNA_result.txt \
+		-c compare_list.txt
+```
+OUTPUT
+```
+|--gene.1 .png
+|--gene.2 .png
+|--gene.3 .png
+```
