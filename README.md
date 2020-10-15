@@ -142,7 +142,7 @@ command : Graph
 ## The input file format
 
 ### 1: bam_list.txt 
-(applied in “Local_reads_selection”, “Local_de_novo_assembly”)
+(Applied in “Local_reads_selection”, “Local_de_novo_assembly”)
 
 This file is containing (1)sample name and (2)full path of bam files for each sample in Tab delaminated format.
 
@@ -156,7 +156,7 @@ Sample_P3	/…/…/…/P3.sort.bam
 ```
 
 ### 2: fa_list.txt 
-(applied in “Local_reads_selection”, “Local_de_novo_assembly”)
+(Applied in “Local_reads_selection”, “Local_de_novo_assembly”)
 
 This file is containing (1)sample name and (2)full path of gz compressed fasta formatted sequence reads for each sample in Tab delaminated format. More than two fasta files used for a same sample is listed in different lines as described in Sample_P3
 
@@ -172,7 +172,7 @@ Sample_P3	/…/…/…/P3_3.fa.gz
 ```
 
 ### 3: aligned_read_list.txt 
-(applied in “Local_reads_selection”, “Local_de_novo_assembly”)
+(Applied in “Local_reads_selection”, “Local_de_novo_assembly”)
 
 This file is containing (1)sample name and (2)full path of sequence read files for each sample in Tab delaminated format.  fasta, fastq and their gz compressed files can be applied.  More than two sequence files used for a same sample is listed in different lines as described in Sample_P3
 
@@ -188,12 +188,12 @@ Sample_P3	/…/…/…/P3_3.fa
 ```
 
 ### 4: gene.gtf
-(applied in “SVs_detection”)
+(Applied in “SVs_detection”)
 
 This file is gtf format file developed by [Stringtie](https://ccb.jhu.edu/software/stringtie/index.shtml?t=manual#output) or any tool. The only "transcript" feature is analyzed in this program.
 
 ### 5: compare_list.txt
-(applied in “SVs_detection”)
+(Applied in “SVs_detection”)
 
 This file is used for comparing SVs between two samples by comparing the aligned depth of each long reads to the assembled contig. This file is contained (1)the name of Sample 1 name, (2)full path of bam for Sample 1, (3)full path of fasta format sequence reads for Sample 1, (4)the name of Sample 2 name, (5)full path of bam for Sample 2 and  (6)full path of sequence reads for Sample 2 in Tab delaminated format.
 
@@ -208,7 +208,7 @@ Sample_P3	/…/…/…/P3.sort.bam	/…/…/…/P3_alined.fa.gz	Sample_P2	/…/�
 ```
 
 ### 6: graph_data.txt
-(applied in “Graph”)
+(Applied in “Graph”)
 
 This file is used for drawing graph plotting P-value from statistical analysis of aligned depth and showing the region having SVs. This file is contained (1)the full path of the directory of comparing the alignment result between samples and (2) hex triplet color code without # (https://en.wikipedia.org/wiki/Web_colors) in Tab delaminated format.
 
@@ -221,7 +221,91 @@ Ex)
 ```
 
 
+## The output file format in the result of each command
 
+### Local_reads_selection
+
+1: aligned_[chr]_[start_posi]_[end_posi]_[sample_name].fa
+  This file is multi fasta file.  
+  This multi fasta file contains the long reads aligned at the given genomic region.
+
+2: aligned_[chr]_[start_posi]_[end_posi]_[sample_name].stat.txt
+  This file is a text file showing summary of the selected long reads in 1.
+ 
+
+### Local_de_novo_assembly
+
+1: aligned_[chr]_[start_posi]_[end_posi]_[sample_name].fa
+  This file is multi fasta file.  
+  This multi fasta file contains the long reads aligned at the given genomic region.
+
+2: aligned_[chr]_[start_posi]_[end_posi]_[sample_name].stat.txt
+  This file is a text file showing summary of the selected long reads in 1.
+
+3: Local_de_novo_assembly_[sample_name]_[chr]_[start_posi]_[end_posi]
+  This is the directly containing the result from Canu assembly with the selected long reads in 1.
+
+
+### Long_reads_alignment
+
+1: [sample_name].sort.bam
+  This file is the sorted bam file.
+  This bam is developed by aligning the sequence reads of [sample_name] to the given reference.
+
+2: [sample_name].sort.bam.bai
+  This is index file of 1.
+
+
+### SVs_detection
+
+1: filter_InDel_size_DNA_result.txt
+  This file is a text showing the detected SVs between given samples.
+  The file format is written in below.
+  column	description
+  1		gene id from the given gtf file 
+  2		chr name for the gene of 1 column.
+  3		start position of genomic region for the gene of 1 column.* 
+  4		end position of genomic region for the gene of 1 column.*
+  5		strand of the  gene in 1 column.
+  6		detecting common mutation. [mut] indicates the gene containing common mutation among compared samples.  
+  7~		the combination detected the mutation in the gene of 1 column.
+  * The genomic region contains not only transcript feature defined by gtf file but also promoter length indicated by option -p.
+
+  ex)
+   [gene_id] [chr] [start] [end]   [strand] [common] [pompare1] [compare2]
+   ```
+   gene.1	tig00000001	1	10000	+	-	-
+   gene.2	tig00000001	10000	20000	-	mut	P1_vs_P2	P3_vs_P2
+   gene.3	tig00000001	20000	30000	-	mut	P1_vs_P2	P3_vs_P2
+   ```
+
+2: [Sample1]_vs_[Sample2]/filter_InDel_size_Fishered_[Sample1]_vs_[Sample2].pileup
+  This file is a text showing the alined depth of each sample at the position detecting the edge of the alined reads or covering no sequence reads.
+  The file format is written in below.
+  column	description
+  
+  1		chr name of reference fasta. 
+  2		position of reference fasta.
+  3		alignment depth of [Sample1].
+  4		alignment depth of [Sample2].
+  5		number of edge of the alined reads of [Sample1].
+  6		number of edge of the alined reads of [Sample2].
+  7		P-value calculated from Fisher’s exact test.
+
+ ex)
+  [chr]	[position] [Sample1_depth] [Sample2_depth] [edge_Sample1] [edge_Sample2] [P-value]
+  ```
+  tig00000001 1020 2 2 1 1 1
+  tig00000001 3223 3 1 1 0 1
+  tig00000001 5154 4 1 1 0 1
+  tig00000001 134561 4 0 2 1 0.428
+  tig00000001 151564 5 1 2 0 0.999
+  ```
+
+### Graph
+
+1: [gene_id].png
+  This file is a graph plotting P-value calculated by SVs_detection in each genomic region. 
 
 
 
