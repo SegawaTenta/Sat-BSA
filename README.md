@@ -226,7 +226,7 @@ Ex)
 ### Local_reads_selection
 
 1: aligned_[chr]_[start_posi]_[end_posi]_[sample_name].fa
-  This file is multi fasta file.  
+  This file is multi fasta file.
   This multi fasta file contains the long reads aligned at the given genomic region.
 
 2: aligned_[chr]_[start_posi]_[end_posi]_[sample_name].stat.txt
