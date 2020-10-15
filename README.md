@@ -1,7 +1,7 @@
 # Sat-BSA
 
 ## Table of contents
- - [Installation]
+ - [Installation](#Installation)
  - [Dependencies]
   + [Installation using bioconda]
   + [Manual Installation]
