@@ -22,60 +22,67 @@ function usage() {
   oo   oo  oo  ooo   o          oo    oo   oo   oo oo      oo
    ooooo    oooooo   ooo        ooooooo     ooooo  oo      oo
 
+
   Description:
-    This is Sat-BAS version 1.0.
+  This is Sat-BSA version 1.9.
+  Sat-BSA is a package used for applying local de novo assembly and identifying the structural variants in the assembled contigs.
 
-  Usage:
-    `basename $0` -w Local_reads_selection [Required options] ..
-    `basename $0` -w Local_de_novo_assembly [Required options] ..
-    `basename $0` -w Long_reads_alignment [Required options] ..
-    `basename $0` -w SVs_detection [Required options] ..
-    `basename $0` -w Graph [Required options] ..
+Usage:
+  Sat-BSA -w command [Required arguments] [Additional options]
 
-  Options of Local_reads_selection:
-    Required options:
-      -c String     : Chromosome to select.
-      -s Int        : Start position to select.
-      -e Int        : End position to select.
-      -b Path       : Full path to text file listing bam files.
-      -f Path       : Full path to text file listing fa.gz files.
-    Any option:
-      -t Int        : CPU. [1]
+command : Local_reads_selection
+  This command is applied for selecting long reads alined at target region.
+  Required arguments:
+    -c String     : Chromosome name for selecting the aligned reads.
+    -s Int        : Start position for selecting the aligned reads.
+    -e Int        : End position for selecting the aligned reads.
+    -b Path       : Full path of bam_list.txt listing bam files (Input format 1).
+    -f Path       : Full path of fa_list.txt listing fasta.gz files (Input format 2).
+  Additional options:
+    -t Int        : Thread number. Default=[1]
 
-  Options of Local_de_novo_assembly:
-    In addition to the Local_reads_selection options, you can set the following options!
-    Required options:
-      -d Path       : Full path to Canu.
-    Any options:
-      -g String     : Genome size set in Canu.[2m]
-      -r String     : Read status set in Canu.[-nanopore-raw]
+command : Local_de_novo_assembly
+  This command is applied for selecting long reads alined at target region and assembling the selected long reads with Canu (https://github.com/marbl/canu).
+  Required arguments:
+    -c String     : Chromosome name for selecting the aligned reads.
+    -s Int        : Start position for selecting the aligned reads.
+    -e Int        : End position for selecting the aligned reads.
+    -b Path       : Full path of bam_list.txt listing bam files (Input format 1).
+    -f Path       : Full path of fa_list.txt listing fasta.gz files (Input format 2).
+    -d Path       : Full path of Canu.
+  Additional options:
+    -g Int        : Genome size in Mb set in Canu.
+    -r String     : Read status set in Canu. Default=[-nanopore-raw].
 
-  Options of Long_reads_alignment:
-    Required options:
-      -f Path       : Full path to text file listing reads files.
-      -r Path       : Full path to refarence genome fasta.
-    Any options:
-      -q Int        : Removed less than Int mapping quality alignment.[0]
-      -t Int        : CPU. [1]
-      -i ont or pb  : Reads type. [ont]
+command : Long_reads_alignment
+  This command is applied for aligning long reads with Minimap2.
+  Required arguments:
+    -f Path       : Full path of aligned_read_list.txt listing sequence reads applied to Minimap2 (Input format 3).
+    -r Path       : Full path of fasta file used as reference.
+  Additional options:
+    -q Int        : The mapping quality value excluded from analysis. Default=[0]
+    -t Int        : Thread number. Default=[1]
+    -i ont or pb  : The used sequence reads type (Oxford Nanopore Technologies[ont] or PacBio[pb]).
 
-  Options of SVs_detection:
-    Required options:
-      -c Path       : Full path to text file listing samples to compare.
-      -g Path       : Full path to gtf file.
-      -r Path       : Full path to refarence genome fasta.
-    Any option:
-      -p Int        : Promoter size.[0]
-      -t Int        : CPU. [1]
-      -v Int        : P-value threshold.[0.05]
-      -f Int        : InDels Int or less bp are not detected.[5]
+command : SVs_detection
+   This command is applied for identifying structural variants between samples by comparing the alignment depth of long reads in the contigs constructed by local de novo assembly.
+  Required arguments:
+    -g Path       : Full path of gtf file (Input format 4).
+    -c Path       : Full path of samples.txt listing the compared samples (Input format 5).
+    -r Path       : Full path of fasta files used as refarence genome.
+  Additional options:
+    -p Int        : Defining promoter size applied for identifying SVs. Default=[0]
+    -t Int        : Thread number Default=[1]
+    -v Int        : Threshold for P-value from Fishers exact test. Default=[0.05]
+    -f Int        : The minimum length of insertion or deletion applied for analysis. Default=[5]
 
-  Options of Graph:
-    Required options:
-      -r Path       : Full path to result file output in SVs_detection.
-      -c Path       : Full path to text file listing pilup and hexagonal color.
-    Any options:
-      -t Int        : CPU. [1]
+command : Graph
+  This command is applied for drawing graph with the result from SVs_detections.
+  Required arguments:
+    -r Path       : Full path of result.txt which is an output from SVs_detection command.
+    -c Path       : Full path of graph_data.txt listing the path to directory constructed by SVs_detection command and color used for the line of graph (Input format 6).
+  Additional options:
+    -t Int        : Thread number. Default=[1]
 
 _EOT_
   exit 0
@@ -190,8 +197,6 @@ then
   cat s1_1_select_reads_name.txt|xargs -P ${cpu} -I % sh -c %
   cat s1_2_pick_up.txt|xargs -P ${cpu} -I % sh -c %
   cat s1_3_merge.txt|xargs -P ${cpu} -I % sh -c %
-  # rm *[0-9].fa
-  # rm *_selected_reads_list.txt
   cat s1_4_info.txt|xargs -P ${cpu} -I % sh -c %
 
   if [ $work == 2 ]
@@ -199,6 +204,11 @@ then
     make_Local_de_novo_assembly.pl $bam_list ${genome_size}m $reads_info $chr $s_posi $e_posi $canu_path
     cat s2_1_Local_de_novo_assembly.txt|xargs -P ${cpu} -I % sh -c %
   fi
+
+  rm *_[0-9]+.fa
+  rm *_selected_reads_list.txt
+  rm Local_reads_selection_link.sh
+  rm -r link1
 
 elif [ $work == 3 ]
 then
@@ -246,8 +256,14 @@ then
   cat s3_5_sort.txt|xargs -P $cpu -I % sh -c %
   cat s3_6_index.txt|xargs -P $cpu -I % sh -c %
 
-  # rm *.sam
-  # rm *.pre.bam
+  rm Long_reads_alignment_link.sh
+  rm -r link3
+  rm *_[0-9]+.sam
+  rm *_[0-9]+.filtered_Q[0-9]+.sam
+  rm *_[0-9]+.pre.bam
+  rm *_merged.bam
+
+
 elif [ $work == 4 ]
 then
   compare_list=""
@@ -302,6 +318,16 @@ then
   4_6_match_pileup.pl filter_InDel_size_compare_list.txt
   4_7_result.pl filter_InDel_size_match_mutation.pileup filter_InDel_size_compare_list.txt gene_region.txt
 
+  rm *_vs_*.sh
+  rm gene_region.txt
+  rm filter_InDel_size_match_mutation.pileup
+  rm filter_InDel_size_compare_list.txt
+  rm *_vs_*/Fishered_P1_vs_P2.pileup
+  rm *_vs_*/InDel_position.txt
+  rm *_vs_*/m_*.pileup
+  rm *_vs_*/*_size.txt
+  rm *_vs_*/*_vs_*.pileup
+  rm -r *_vs_*/link_*
 
 elif [ $work == 5 ]
 then
@@ -333,12 +359,14 @@ then
     exit
   fi
 
-  mkdir Graph
-  cd Graph
   mkdir Graph_script
   5_1_make_script.pl $result_file $SCRIPT_DIR/5_make_graph.R
   ls -1 Graph_script/* > script.txt
   5_2_make_format.pl script.txt $compare_list
   cat make_script.txt|xargs -P ${cpu} -I % sh -c %
+
+  rm -r Graph_script
+  rm make_script.txt
+  rm script.txt
 
 fi
