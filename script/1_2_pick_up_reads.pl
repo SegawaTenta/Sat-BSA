@@ -25,25 +25,19 @@ my $botan=0;
 while (my $genome = <FILE>) {
     chomp $genome;
     $count++;
-    # print "$genome\n";
-    # print "$genome\n";
-    if($count%2==1){
-        my @colom = split (/\s+/, $genome);
-        # my @colom2 = split (/\s+/, $colom[0]);
-        $colom[0]=~s/^>//;
-        # print "$colom[0]\n";
-        if(exists($QNAME_hash{$colom[0]})){
-            # print "$colom[0]\n";
-            $botan=1;
-        }
+
+    if($genome=~/^>/){
+      my @colom = split (/\s+/, $genome);
+      $colom[0]=~s/^>//;
+      if(exists($QNAME_hash{$colom[0]})){
+          $botan=1;
+      }else{
+          $botan=0;
+      }
     }
-    
-    if(1 <= $botan and $botan <= 2){
-        print OUTPUT "$genome\n";
-        $botan++;
-        # print "$botan\n";
-    }else{
-        $botan=0;
+
+    if($botan==1){
+      print OUTPUT "$genome\n";
     }
-    
+
 }
