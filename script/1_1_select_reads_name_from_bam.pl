@@ -12,14 +12,14 @@ open (FILE, "$samtools view $bam_file | ") or die "cannot open file";
 open OUTPUT, ">${name}_selected_reads_list.txt\n" or die "cannot open file";
 while (my $genome = <FILE>) {
     chomp $genome;
-    
+
     my @colom = split (/\s+/, $genome);
     my $reads_name=$colom[0];
     my $mapped_posi_s=$colom[3];
     my $mapped_posi_e=length($colom[9])+$mapped_posi_s;
-    if ($colom[2] =~ /$chromosome/ and $mapped_posi_e >= $first_position and  $mapped_posi_s <= $last_position){
-        print OUTPUT "$reads_name\n"; 
-    }       
+    if ($colom[2] eq $chromosome and $mapped_posi_e >= $first_position and  $mapped_posi_s <= $last_position){
+        print OUTPUT "$reads_name\n";
+    }
 }
 
 close(OUTPUT);
