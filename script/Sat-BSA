@@ -21,7 +21,7 @@ function usage(){
 
 
   Description:
-  This is Sat-BSA version 1.10.
+  This is Sat-BSA version 1.11.
   Sat-BSA is a package used for applying local de novo assembly and identifying the structural variants in the assembled contigs.
 
 Usage:
